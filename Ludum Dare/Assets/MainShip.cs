@@ -18,12 +18,12 @@ public class MainShip : MonoBehaviour
         if(Input.GetKey(KeyCode.D))
         {
             //gameObject.transform.Rotate(new Vector3(0, 0, -0.2f));
-            rb.AddTorque(-0.5f);
+            rb.AddTorque(-0.2f);
         }
         if(Input.GetKey(KeyCode.A))
         {
             //gameObject.transform.Rotate(new Vector3(0, 0, 0.2f));
-            rb.AddTorque(0.5f);
+            rb.AddTorque(0.2f);
         }
     }
 }
