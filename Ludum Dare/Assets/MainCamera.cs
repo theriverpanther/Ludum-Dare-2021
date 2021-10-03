@@ -23,7 +23,7 @@ public class MainCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mainCamera.transform.position = currTarget.transform.position;
+        mainCamera.transform.position = new Vector3(currTarget.transform.position.x, currTarget.transform.position.y, -10);
     }
 
     // can be called to change the camera zoom
