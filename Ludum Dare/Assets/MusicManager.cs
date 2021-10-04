@@ -11,8 +11,10 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     AudioClip neutralZoneCont;
 
+    private float timeElapsed;
+
     private bool hasTriggered = false;
-    public void OnCollisionEnter2D(Collider2D hit)
+    public void OnCollisionEnter2D(Collision2D hit)
     {
         if(!hasTriggered)
         {
@@ -26,7 +28,11 @@ public class MusicManager : MonoBehaviour
 
     public void Update()
     {
-        if(!source.isPlaying)
+        if(source.clip == neutralZoneStart)
+        {
+            timeElapsed += Time.deltaTime;
+        }
+        if(timeElapsed >= neutralZoneStart.length)
         {
             source.Stop();
             source.loop = true;
