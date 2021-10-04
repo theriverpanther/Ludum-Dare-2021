@@ -590,32 +590,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1080018951 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5179803970693926048, guid: edf52bcacc531e44caf7fdecec97a630, type: 3}
-  m_PrefabInstance: {fileID: 5179803969614070951}
-  m_PrefabAsset: {fileID: 0}
 --- !u!50 &1080018954 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 5179803970693926061, guid: edf52bcacc531e44caf7fdecec97a630, type: 3}
   m_PrefabInstance: {fileID: 5179803969614070951}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &1080018955
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080018951}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0034689778, y: -0.008334041}
-  serializedVersion: 2
-  m_Radius: 0.23497522
 --- !u!1 &1230674293
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,10 +931,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ship
       objectReference: {fileID: 0}
-    - target: {fileID: 5179803970693926048, guid: edf52bcacc531e44caf7fdecec97a630, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 5179803970693926062, guid: edf52bcacc531e44caf7fdecec97a630, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1000,6 +975,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6036057973353049493, guid: edf52bcacc531e44caf7fdecec97a630, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edf52bcacc531e44caf7fdecec97a630, type: 3}
