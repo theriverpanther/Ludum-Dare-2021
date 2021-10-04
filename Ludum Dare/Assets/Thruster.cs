@@ -81,6 +81,7 @@ public class Thruster : MonoBehaviour
     private void OnJointBreak2D(Joint2D joint)
     {
         attached = false;
+        particles.SetActive(false);
         StartCoroutine(JointAdd());
     }
 
