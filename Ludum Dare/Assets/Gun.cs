@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
     [SerializeField] float forceDirection;
     [SerializeField] GameObject bullet;
     LineRenderer line;
+    AudioSource laserSound;
 
     GameObject player;
 
@@ -18,6 +19,7 @@ public class Gun : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         player = FindObjectOfType<MainShip>().gameObject;
         line = gameObject.GetComponent<LineRenderer>();
+        laserSound = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class Gun : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Instantiate(bullet, gameObject.transform.position, gameObject.transform.rotation);
+                laserSound.Play();
                 Debug.Log(transform.position);
             }
 
