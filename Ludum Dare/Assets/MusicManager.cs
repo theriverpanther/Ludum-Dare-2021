@@ -39,6 +39,7 @@ public class MusicManager : MonoBehaviour
             source.loop = true;
             source.clip = neutralZoneCont;
             source.Play();
+            timeElapsed = 0;
         }
     }
 }
