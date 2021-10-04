@@ -16,9 +16,11 @@ public class MusicManager : MonoBehaviour
     {
         if(!hasTriggered)
         {
+            source.Stop();
             source.clip = neutralZoneStart;
             hasTriggered = true;
             source.loop = false;
+            source.Play();
         }
     }
 
@@ -26,8 +28,10 @@ public class MusicManager : MonoBehaviour
     {
         if(!source.isPlaying)
         {
+            source.Stop();
             source.loop = true;
             source.clip = neutralZoneCont;
+            source.Play();
         }
     }
 }
