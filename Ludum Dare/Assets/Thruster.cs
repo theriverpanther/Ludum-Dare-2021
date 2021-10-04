@@ -10,12 +10,15 @@ public class Thruster : MonoBehaviour
     [SerializeField] public ContactPoint2D[] points = new ContactPoint2D[30];
 
     GameObject player;
+    GameObject particles;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         player = FindObjectOfType<MainShip>().gameObject;
+        particles = GetComponentInChildren<ParticleSystem>().gameObject;
+        particles.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,10 +31,16 @@ public class Thruster : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * 0.5f);
+                particles.SetActive(true);
             }
             if (Input.GetKey(KeyCode.S))
             {
                 rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * -0.5f);
+                particles.SetActive(false);
+            }
+            if(!Input.GetKey(KeyCode.W))
+            {
+                particles.SetActive(false);
             }
         }
     }
@@ -67,5 +76,20 @@ public class Thruster : MonoBehaviour
                 attached = true;
             }
         }
+    }
+
+    private void OnJointBreak2D(Joint2D joint)
+    {
+        attached = false;
+        StartCoroutine(JointAdd());
+    }
+
+    private IEnumerator JointAdd()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameObject.AddComponent<DistanceJoint2D>();
+        DistanceJoint2D newjoint = gameObject.GetComponent<DistanceJoint2D>();
+        newjoint.enableCollision = true;
+        newjoint.maxDistanceOnly = true;
     }
 }
