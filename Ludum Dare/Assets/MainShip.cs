@@ -19,11 +19,13 @@ public class MainShip : MonoBehaviour
         {
             //gameObject.transform.Rotate(new Vector3(0, 0, -0.2f));
             rb.AddTorque(-0.2f);
+            rb.AddForce(new Vector2(0.1f, 0));
         }
         if(Input.GetKey(KeyCode.A))
         {
             //gameObject.transform.Rotate(new Vector3(0, 0, 0.2f));
             rb.AddTorque(0.2f);
+            rb.AddForce(new Vector2(-0.1f, 0));
         }
     }
 }

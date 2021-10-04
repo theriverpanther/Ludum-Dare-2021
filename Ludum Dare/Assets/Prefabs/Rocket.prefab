@@ -203,13 +203,13 @@ DistanceJoint2D:
   serializedVersion: 4
   m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: 75
+  m_BreakForce: 60
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0.26, y: 0.10391311}
   m_ConnectedAnchor: {x: -0.20836781, y: -0.09304166}
   m_AutoConfigureDistance: 1
-  m_Distance: 2.8949833
+  m_Distance: 39.92932
   m_MaxDistanceOnly: 1
 --- !u!114 &3211402199859356621
 MonoBehaviour:
