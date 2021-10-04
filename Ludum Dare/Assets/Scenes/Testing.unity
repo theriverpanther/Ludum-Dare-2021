@@ -358,7 +358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3211402199859356620, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.381
+      value: 1.247
       objectReference: {fileID: 0}
     - target: {fileID: 3211402199859356620, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -391,14 +391,6 @@ PrefabInstance:
     - target: {fileID: 3211402199859356620, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3211402199859356621, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
-      propertyPath: attached
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3211402199859356624, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
-      propertyPath: m_Distance
-      value: 3.4817102
       objectReference: {fileID: 0}
     - target: {fileID: 3211402199859356627, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
       propertyPath: m_Name
@@ -709,6 +701,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3211402199859356621, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
+      propertyPath: attached
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3211402199859356624, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
       propertyPath: m_Anchor.x
       value: 0.08264932
@@ -720,6 +716,10 @@ PrefabInstance:
     - target: {fileID: 3211402199859356624, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
       propertyPath: m_Distance
       value: 0.021201942
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211402199859356624, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
+      propertyPath: m_BreakForce
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3211402199859356624, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -899,6 +899,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3211402199859356621, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
+      propertyPath: attached
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3211402199859356624, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
       propertyPath: m_Anchor.x
       value: 0.11636556
@@ -910,6 +914,10 @@ PrefabInstance:
     - target: {fileID: 3211402199859356624, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
       propertyPath: m_Distance
       value: 0.027200341
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211402199859356624, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
+      propertyPath: m_BreakForce
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3211402199859356624, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -926,6 +934,10 @@ PrefabInstance:
     - target: {fileID: 3211402199859356627, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
       propertyPath: m_Name
       value: Rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139440405085125657, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4fa8d7a9b7d0e44bbbef0343c2871be, type: 3}
