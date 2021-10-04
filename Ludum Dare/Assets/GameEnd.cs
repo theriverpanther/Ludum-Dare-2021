@@ -8,6 +8,7 @@ public class GameEnd : MonoBehaviour
     private GameObject endScreen;
     public void OnCollisionEnter2D()
     {
+        GameObject.Find("GameManager").GetComponent<GameManager>().PlayerFinish();
         endScreen.SetActive(true);
     }
 }

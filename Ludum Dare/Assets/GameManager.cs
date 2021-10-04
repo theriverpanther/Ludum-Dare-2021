@@ -13,11 +13,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject timer;
     private TMP_Text timerText;
+    [SerializeField]
+    private TMP_Text endGameTime;
 
     private TimeSpan timePlaying;
     private bool timerActive;
 
     private float elapsedTime;
+
+    public float finalTime;
 
     // Start is called before the first frame update
     void Start()
@@ -58,5 +62,12 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         Application.Quit();
+    }
+
+    public void PlayerFinish()
+    {
+        timePlaying = TimeSpan.FromSeconds(300) - TimeSpan.FromSeconds(elapsedTime);
+        string timePlayingStr = "Finish Time: " + timePlaying.ToString("mm':'s'.'ff");
+        endGameTime.text = timePlayingStr;
     }
 }
