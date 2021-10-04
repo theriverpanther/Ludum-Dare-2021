@@ -14,14 +14,15 @@ public class MusicManager : MonoBehaviour
     private float timeElapsed = 0;
 
     private bool hasTriggered = false;
-    public void OnCollisionEnter2D(Collision2D hit)
+    public void OnTriggerEnter2D(Collider2D hit)
     {
-        if(!hasTriggered)
+        if(!hasTriggered && hit.gameObject.tag == "Player")
         {
             source.Stop();
             source.clip = neutralZoneStart;
             hasTriggered = true;
             source.loop = false;
+            source.volume = .9f;
             source.Play();
         }
     }

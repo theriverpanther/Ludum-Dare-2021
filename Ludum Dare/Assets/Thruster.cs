@@ -11,6 +11,7 @@ public class Thruster : MonoBehaviour
 
     GameObject player;
     GameObject particles;
+    GameObject attachedTarget;
 
     // Start is called before the first frame update
     void Start()
@@ -30,23 +31,38 @@ public class Thruster : MonoBehaviour
         //Apply thrust if attached to ship
         if (attached)
         {
-            if (Input.GetKey(KeyCode.W))
+            if (attachedTarget.tag == "Player")
             {
-                rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * 0.5f);
-                particles.SetActive(true);
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * -0.5f);
-                particles.SetActive(false);
-            }
-            if(!Input.GetKey(KeyCode.W))
-            {
-                particles.SetActive(false);
-            }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * 0.5f);
+                    particles.SetActive(true);
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * -0.5f);
+                    particles.SetActive(false);
+                }
+                if (!Input.GetKey(KeyCode.W))
+                {
+                    particles.SetActive(false);
+                }
 
-            line.SetPosition(0, transform.position);
-            line.SetPosition(1, player.transform.position);
+                line.SetPosition(0, transform.position);
+                line.SetPosition(1, attachedTarget.transform.position);
+            } else
+            {
+                if (attachedTarget.GetComponent<AIScript>().firingEngines)
+                {
+                    rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * 0.5f);
+                    particles.SetActive(true);
+                } else
+                {
+                    particles.SetActive(false);
+                }
+                line.SetPosition(0, transform.position);
+                line.SetPosition(1, attachedTarget.transform.position);
+            }
         }
         else
         {
@@ -57,12 +73,12 @@ public class Thruster : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject == player)
+        if(collision.gameObject == player || collision.gameObject.tag == "AI")
         {
             if(!attached)
             {
                 DistanceJoint2D joint = gameObject.GetComponent<DistanceJoint2D>();
-                joint.connectedBody = player.GetComponent<Rigidbody2D>();
+                joint.connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
 
                 //TRIG STUFF
                 float myRadius = gameObject.GetComponent<CircleCollider2D>().radius;
@@ -77,7 +93,8 @@ public class Thruster : MonoBehaviour
 
                 joint.anchor = new Vector2(Mathf.Cos(jointAngle - myContactAngle) * myRadius, Mathf.Sin(jointAngle - myContactAngle) * myRadius);
                 joint.connectedAnchor = new Vector2(Mathf.Cos(jointAngleShip - shipContactAngle) * shipRadius, Mathf.Sin(jointAngleShip - shipContactAngle) * shipRadius);
-                
+
+                attachedTarget = collision.gameObject;
                 attached = true;
             }
         }
