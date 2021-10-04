@@ -12,7 +12,7 @@ public class MusicManager : MonoBehaviour
     AudioClip neutralZoneCont;
 
     private bool hasTriggered = false;
-    public void OnCollisionEnter2D()
+    public void OnCollisionEnter2D(Collider2D hit)
     {
         if(!hasTriggered)
         {
