@@ -2,23 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Thruster : MonoBehaviour
+public class Gun : MonoBehaviour
 {
     Rigidbody2D rb;
     [SerializeField] bool attached;
     [SerializeField] float forceDirection;
+    [SerializeField] GameObject bullet;
     LineRenderer line;
 
     GameObject player;
-    GameObject particles;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         player = FindObjectOfType<MainShip>().gameObject;
-        particles = GetComponentInChildren<ParticleSystem>().gameObject;
-        particles.SetActive(false);
         line = gameObject.GetComponent<LineRenderer>();
     }
 
@@ -27,22 +25,12 @@ public class Thruster : MonoBehaviour
     {
         forceDirection = Mathf.Deg2Rad * gameObject.transform.rotation.eulerAngles.z;
 
-        //Apply thrust if attached to ship
         if (attached)
         {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * 0.5f);
-                particles.SetActive(true);
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * -0.5f);
-                particles.SetActive(false);
-            }
-            if(!Input.GetKey(KeyCode.W))
-            {
-                particles.SetActive(false);
+                Instantiate(bullet, gameObject.transform.position, gameObject.transform.rotation);
+                Debug.Log(transform.position);
             }
 
             line.SetPosition(0, transform.position);
@@ -57,9 +45,9 @@ public class Thruster : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject == player)
+        if (collision.gameObject == player)
         {
-            if(!attached)
+            if (!attached)
             {
                 DistanceJoint2D joint = gameObject.GetComponent<DistanceJoint2D>();
                 joint.connectedBody = player.GetComponent<Rigidbody2D>();
@@ -77,7 +65,7 @@ public class Thruster : MonoBehaviour
 
                 joint.anchor = new Vector2(Mathf.Cos(jointAngle - myContactAngle) * myRadius, Mathf.Sin(jointAngle - myContactAngle) * myRadius);
                 joint.connectedAnchor = new Vector2(Mathf.Cos(jointAngleShip - shipContactAngle) * shipRadius, Mathf.Sin(jointAngleShip - shipContactAngle) * shipRadius);
-                
+
                 attached = true;
             }
         }
@@ -86,7 +74,6 @@ public class Thruster : MonoBehaviour
     private void OnJointBreak2D(Joint2D joint)
     {
         attached = false;
-        particles.SetActive(false);
         StartCoroutine(JointAdd());
     }
 
