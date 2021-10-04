@@ -12,6 +12,7 @@ public class Thruster : MonoBehaviour
     GameObject player;
     GameObject particles;
     GameObject attachedTarget;
+    AudioSource fireSource;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class Thruster : MonoBehaviour
         particles = GetComponentInChildren<ParticleSystem>().gameObject;
         particles.SetActive(false);
         line = gameObject.GetComponent<LineRenderer>();
+        fireSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -36,15 +38,18 @@ public class Thruster : MonoBehaviour
                 if (Input.GetKey(KeyCode.W))
                 {
                     rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * 0.5f);
+                    fireSource.Play();
                     particles.SetActive(true);
                 }
                 if (Input.GetKey(KeyCode.S))
                 {
                     rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * -0.5f);
+                    fireSource.Play();
                     particles.SetActive(false);
                 }
                 if (!Input.GetKey(KeyCode.W))
                 {
+                    fireSource.Stop();
                     particles.SetActive(false);
                 }
 
@@ -55,9 +60,11 @@ public class Thruster : MonoBehaviour
                 if (attachedTarget.GetComponent<AIScript>().firingEngines)
                 {
                     rb.AddForce(new Vector2(Mathf.Cos(forceDirection), Mathf.Sin(forceDirection)) * 0.5f);
+                    fireSource.Play();
                     particles.SetActive(true);
                 } else
                 {
+                    fireSource.Stop();
                     particles.SetActive(false);
                 }
                 line.SetPosition(0, transform.position);
