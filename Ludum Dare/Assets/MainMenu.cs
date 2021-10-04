@@ -25,6 +25,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private Slider slider;
 
+    public void Start()
+    {
+        mainMenuParent.SetActive(true);
+        optionsMenuParent.SetActive(false);
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene("Main_Scene");

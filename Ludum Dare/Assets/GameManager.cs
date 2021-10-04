@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     private TMP_Text timerText;
     [SerializeField]
     private TMP_Text endGameTime;
+    [SerializeField]
+    private GameObject endScreen;
 
     private TimeSpan timePlaying;
     private bool timerActive;
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        endScreen.SetActive(false);
         timePassed = 0;
         timerText = timer.GetComponent<TMP_Text>();
         timerText.text = "Timer: 00:00.00";

@@ -14,7 +14,7 @@ public class MusicManager : MonoBehaviour
     private float timeElapsed = 0;
 
     private bool hasTriggered = false;
-    public void OnCollisionEnter2D(Collision2D hit)
+    public void OnTriggerEnter2D(Collider2D hit)
     {
         if(!hasTriggered)
         {
@@ -38,6 +38,7 @@ public class MusicManager : MonoBehaviour
             source.loop = true;
             source.clip = neutralZoneCont;
             source.Play();
+            timeElapsed = 0;
         }
     }
 }

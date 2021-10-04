@@ -6,7 +6,7 @@ public class GameEnd : MonoBehaviour
 {
     [SerializeField]
     private GameObject endScreen;
-    public void OnCollisionEnter2D(Collision2D hit)
+    public void OnTriggerEnter2D(Collider2D hit)
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().PlayerFinish();
         endScreen.SetActive(true);
