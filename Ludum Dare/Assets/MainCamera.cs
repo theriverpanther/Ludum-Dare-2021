@@ -11,7 +11,9 @@ public class MainCamera : MonoBehaviour
     [SerializeField]
     int currScale;
     [SerializeField]
-    int scaleLerpDuration;
+    float scaleLerpDuration;
+    public float targetScale;
+    public float scaleBounds = .2f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +26,22 @@ public class MainCamera : MonoBehaviour
     void Update()
     {
         mainCamera.transform.position = new Vector3(currTarget.transform.position.x, currTarget.transform.position.y, -10);
+        if (mainCamera.orthographicSize <= targetScale - scaleBounds || mainCamera.orthographicSize >= targetScale + scaleBounds)
+        {
+            if (mainCamera.orthographicSize < targetScale)
+            {
+                mainCamera.orthographicSize += scaleLerpDuration * Time.deltaTime;
+            } else
+            {
+                mainCamera.orthographicSize -= scaleLerpDuration * Time.deltaTime;
+            }
+        }
     }
 
     // can be called to change the camera zoom
     public void SetScale(int newScale)
     {
-        mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, newScale, scaleLerpDuration);
+        // mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, newScale, scaleLerpDuration);
         // mainCamera.orthographicSize += newScale / scaleLerpDuration;
     }
 }

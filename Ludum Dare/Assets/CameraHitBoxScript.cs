@@ -5,13 +5,20 @@ using UnityEngine;
 public class CameraHitBoxScript : MonoBehaviour
 {
     [SerializeField]
-    int newCameraScale;
+    float newCameraScale;
+    GameObject mainCamera;
 
-    private void OnTriggerEnter2D(Collision2D collision)
+    private void Start()
+    {
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<MainCamera>().SetScale(newCameraScale);
+            Debug.Log(collision.gameObject);
+            mainCamera.GetComponent<MainCamera>().targetScale = newCameraScale;
         }
     }
 }
