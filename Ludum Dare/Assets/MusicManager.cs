@@ -11,7 +11,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     AudioClip neutralZoneCont;
 
-    private float timeElapsed;
+    private float timeElapsed = 0;
 
     private bool hasTriggered = false;
     public void OnCollisionEnter2D(Collision2D hit)
